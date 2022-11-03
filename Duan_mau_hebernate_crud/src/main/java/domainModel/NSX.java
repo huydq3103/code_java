@@ -5,6 +5,7 @@
 package domainModel;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.Set;
 import javax.annotation.processing.Generated;
 import javax.persistence.CascadeType;
@@ -33,7 +34,7 @@ public class NSX implements Serializable{
     private String Ma;
     
     @OneToMany(mappedBy = "NSX",cascade = CascadeType.ALL)
-    private Set<ChiTietSP> chiTietSPs ;
+    private List<ChiTietSP> chiTietSPs ;
     
   
 
@@ -70,14 +71,15 @@ public class NSX implements Serializable{
         this.Ma = Ma;
     }
 
-    public Set<ChiTietSP> getChiTietSPs() {
+    public List<ChiTietSP> getChiTietSPs() {
         return chiTietSPs;
     }
 
-    public void setChiTietSPs(Set<ChiTietSP> chiTietSPs) {
+    public void setChiTietSPs(List<ChiTietSP> chiTietSPs) {
         this.chiTietSPs = chiTietSPs;
     }
 
+   
     @Override
     public String toString() {
         return "NSX{" + "Id=" + Id + ", Ten=" + Ten + ", Ma=" + Ma + ", chiTietSPs=" + chiTietSPs + '}';

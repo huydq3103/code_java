@@ -42,22 +42,15 @@ public class SanPham implements Serializable {
     @Column(name = "Ma")
     private String Ma;
 
-    @OneToMany(mappedBy = "sanpham", cascade = CascadeType.ALL)
-    private Set<ChiTietSP> chiTietSPs;
+    @OneToMany(mappedBy = "sanpham", cascade = CascadeType.PERSIST)
+    private List<ChiTietSP> chiTietSPs;
 
-    public Set<ChiTietSP> getChiTietSPs() {
-        return chiTietSPs;
-    }
-
+    
     public SanPham() {
     }
 
-    public SanPham(String Id, String Ten, String Ma) {
-        this.Id = Id;
-        this.Ten = Ten;
-        this.Ma = Ma;
-        
-    }
+ 
+
 
   
     public String getId() {
@@ -84,13 +77,27 @@ public class SanPham implements Serializable {
         this.Ma = Ma;
     }
 
-    public void setChiTietSPs(Set<ChiTietSP> chiTietSPs) {
+    public SanPham(String Id, String Ten, String Ma, List<ChiTietSP> chiTietSPs) {
+        this.Id = Id;
+        this.Ten = Ten;
+        this.Ma = Ma;
         this.chiTietSPs = chiTietSPs;
     }
 
+    public List<ChiTietSP> getChiTietSPs() {
+        return chiTietSPs;
+    }
+
+    public void setChiTietSPs(List<ChiTietSP> chiTietSPs) {
+        this.chiTietSPs = chiTietSPs;
+    }
+
+   
     @Override
     public String toString() {
-        return "SanPham{" + "Id=" + Id + ", Ten=" + Ten + ", Ma=" + Ma + '}';
+        return "SanPham{" + "Id=" + Id + ", Ten=" + Ten + ", Ma=" + Ma + ", chiTietSPs=" + chiTietSPs + '}';
     }
+
+   
 
 }
